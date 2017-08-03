@@ -1,0 +1,12 @@
+<h1 class="text-center">Star Wars Cocktails</h1>
+<div class="text-right">
+  <%= link_to "New Cocktail", new_cocktail_path, class: "btn btn-link btn-xs" %>
+</div>
+<% @cocktails.each do |cocktail| %>
+
+    <p><%= link_to cocktail.name, cocktail_path(cocktail) %></p>
+
+<% end %>
+
+
+
