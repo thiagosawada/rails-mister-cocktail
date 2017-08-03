@@ -13,6 +13,9 @@ url = "http://www.thecocktaildb.com/api/json/v1/1/list.php?i=list"
 document = open(url).read
 ingredients = JSON.parse(document)
 
+Cocktail.destroy_all
+Ingredient.destroy_all
+
 all_ingredients = []
 
 ingredients["drinks"].each do |ingredient|
@@ -21,7 +24,7 @@ end
 
 20.times do
   c = Cocktail.create(name: Faker::StarWars.character)
-  rand(3..5).times do
+  rand(3..6).times do
     Dose.create(description: "#{rand(1..15)} ml", ingredient: all_ingredients.sample, cocktail: c)
   end
 end
